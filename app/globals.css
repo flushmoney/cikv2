@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   --holy-gold: #FFD700;
   --sacred-orange: #FFA500;
   --divine-amber: #FF8C00;
@@ -30,134 +30,125 @@ body {
   background: #000000;
   color: #FFFFFF;
   overflow-x: hidden;
-  line-height: 1.6;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 }
 
-/* Christ is King Theme Components */
-.holy-card {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 165, 0, 0.05) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.1);
+/* Christ is King exact styling */
+.cik-card {
+  background: rgba(255, 215, 0, 0.02);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.divine-button {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+.cik-button {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   color: #000000;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   border: none;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
-.divine-button::before {
+.cik-button::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
 }
 
-.divine-button:hover::before {
+.cik-button:hover::before {
   left: 100%;
 }
 
-.divine-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+.cik-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.25);
 }
 
-.divine-button:active {
+.cik-button:active {
   transform: translateY(0);
 }
 
-.sacred-text {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%);
+.cik-text {
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 800;
 }
 
-.holy-glow {
+.cik-glow {
   position: relative;
 }
 
-.holy-glow::before {
+.cik-glow::before {
   content: '';
   position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
+  inset: -1px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
   border-radius: inherit;
   z-index: -1;
-  opacity: 0.5;
-  filter: blur(10px);
+  opacity: 0.1;
+  filter: blur(8px);
 }
 
-.blessed-shimmer {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 215, 0, 0.1) 0%,
-    rgba(255, 215, 0, 0.3) 50%,
-    rgba(255, 215, 0, 0.1) 100%
-  );
-  background-size: 200% 100%;
-  animation: blessed-shimmer 2s linear infinite;
-}
-
-/* Navigation Styles */
-.holy-nav {
-  background: rgba(0, 0, 0, 0.9);
+.cik-nav {
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.1);
 }
 
-.nav-link {
+.cik-nav-link {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.nav-link::after {
+.cik-nav-link::after {
   content: '';
   position: absolute;
-  bottom: -2px;
+  bottom: -1px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 1px;
   background: linear-gradient(90deg, #FFD700, #FFA500);
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.cik-nav-link:hover::after,
+.cik-nav-link.active::after {
   width: 100%;
 }
 
-/* Typography */
-.hero-title {
-  font-size: clamp(2.5rem, 8vw, 6rem);
+/* Typography matching christisking.io */
+.cik-hero-title {
+  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 900;
-  line-height: 0.9;
+  line-height: 0.95;
   letter-spacing: -0.02em;
 }
 
-.display-title {
+.cik-display-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -166,7 +157,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, #FFD700, #FFA500);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -174,16 +165,16 @@ body {
 }
 
 /* Focus States */
-.focus-ring:focus-visible {
+.cik-focus:focus-visible {
   outline: 2px solid #FFD700;
   outline-offset: 2px;
 }
 
 /* Animations */
-@keyframes holy-entrance {
+@keyframes cik-entrance {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.95);
+    transform: translateY(20px) scale(0.98);
   }
   to {
     opacity: 1;
@@ -191,24 +182,13 @@ body {
   }
 }
 
-.holy-entrance {
-  animation: holy-entrance 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 3rem;
-  }
-  
-  .display-title {
-    font-size: 2rem;
-  }
+.cik-entrance {
+  animation: cik-entrance 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 215, 0, 0.3);
+  background: rgba(255, 215, 0, 0.2);
   color: #FFFFFF;
 }
 

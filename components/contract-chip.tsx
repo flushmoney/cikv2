@@ -24,21 +24,21 @@ export default function ContractChip() {
 
   return (
     <motion.div
-      className="holy-card rounded-2xl p-6 max-w-md"
+      className="cik-card rounded-xl p-6 max-w-md"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.01 }}
     >
       <div className="flex items-center justify-between">
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4 text-primary" />
-            <h3 className="text-sm font-bold text-primary uppercase tracking-wider">
-              Sacred Contract
+            <Shield className="w-4 h-4 text-yellow-400" />
+            <h3 className="text-sm font-bold text-yellow-400 uppercase tracking-wide">
+              Contract
             </h3>
           </div>
-          <p className="font-mono text-sm tabular-nums text-white/90">
+          <p className="font-mono text-sm tabular-nums text-white/90 font-medium">
             {CIK_TOKEN_ADDRESS?.slice(0, 6)}...{CIK_TOKEN_ADDRESS?.slice(-4)}
           </p>
         </div>
@@ -46,26 +46,26 @@ export default function ContractChip() {
         <div className="flex items-center space-x-2">
           <motion.button
             onClick={handleCopy}
-            className="p-3 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors focus-ring group"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="p-3 rounded-lg bg-yellow-400/10 hover:bg-yellow-400/20 transition-colors cik-focus group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="Copy contract address"
           >
             {copied ? (
               <Check className="w-4 h-4 text-green-400" />
             ) : (
-              <Copy className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+              <Copy className="w-4 h-4 text-yellow-400 group-hover:text-white transition-colors" />
             )}
           </motion.button>
           
           <motion.button
             onClick={openBaseScan}
-            className="p-3 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors focus-ring group"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            className="p-3 rounded-lg bg-yellow-400/10 hover:bg-yellow-400/20 transition-colors cik-focus group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             aria-label="View on BaseScan"
           >
-            <ExternalLink className="w-4 h-4 text-primary group-hover:text-white transition-colors" />
+            <ExternalLink className="w-4 h-4 text-yellow-400 group-hover:text-white transition-colors" />
           </motion.button>
         </div>
       </div>

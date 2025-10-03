@@ -12,8 +12,8 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'christ-gradient': 'linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF8C00 100%)',
-        'holy-glow': 'radial-gradient(circle at center, rgba(255, 215, 0, 0.3) 0%, transparent 70%)',
+        'christ-gradient': 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+        'holy-radial': 'radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -36,7 +36,7 @@ const config: Config = {
           foreground: '#000000',
         },
         card: {
-          DEFAULT: 'rgba(255, 215, 0, 0.05)',
+          DEFAULT: 'rgba(255, 215, 0, 0.03)',
           foreground: '#FFFFFF',
         },
         popover: {
@@ -44,15 +44,15 @@ const config: Config = {
           foreground: '#FFFFFF',
         },
         muted: {
-          DEFAULT: 'rgba(255, 215, 0, 0.1)',
+          DEFAULT: 'rgba(255, 215, 0, 0.05)',
           foreground: 'rgba(255, 255, 255, 0.7)',
         },
         destructive: {
           DEFAULT: '#DC2626',
           foreground: '#FFFFFF',
         },
-        border: 'rgba(255, 215, 0, 0.2)',
-        input: 'rgba(255, 215, 0, 0.1)',
+        border: 'rgba(255, 215, 0, 0.1)',
+        input: 'rgba(255, 215, 0, 0.05)',
         ring: '#FFD700',
       },
       fontFamily: {
@@ -61,32 +61,32 @@ const config: Config = {
         mono: ['JetBrains Mono', 'monospace'],
       },
       fontSize: {
-        'hero': ['4rem', { lineHeight: '1.1', fontWeight: '700' }],
-        'display': ['3rem', { lineHeight: '1.2', fontWeight: '600' }],
+        'hero': ['5rem', { lineHeight: '1', fontWeight: '900' }],
+        'display': ['3.5rem', { lineHeight: '1.1', fontWeight: '800' }],
       },
       boxShadow: {
-        'holy': '0 0 50px rgba(255, 215, 0, 0.5)',
-        'divine': '0 0 100px rgba(255, 215, 0, 0.3)',
-        'blessed': '0 4px 20px rgba(255, 215, 0, 0.25)',
+        'holy': '0 0 50px rgba(255, 215, 0, 0.3)',
+        'divine': '0 0 100px rgba(255, 215, 0, 0.2)',
+        'blessed': '0 4px 20px rgba(255, 215, 0, 0.15)',
       },
       keyframes: {
         'holy-pulse': {
           '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(255, 215, 0, 0.5)',
+            boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
             transform: 'scale(1)'
           },
           '50%': { 
-            boxShadow: '0 0 40px rgba(255, 215, 0, 0.8)',
-            transform: 'scale(1.02)'
+            boxShadow: '0 0 40px rgba(255, 215, 0, 0.6)',
+            transform: 'scale(1.01)'
           },
         },
         'divine-glow': {
-          '0%, 100%': { opacity: '0.5' },
-          '50%': { opacity: '1' },
+          '0%, 100%': { opacity: '0.3' },
+          '50%': { opacity: '0.8' },
         },
         'sacred-float': {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
         'blessed-shimmer': {
           '0%': { backgroundPosition: '-200% 0' },
@@ -102,10 +102,10 @@ const config: Config = {
         },
       },
       animation: {
-        'holy-pulse': 'holy-pulse 3s ease-in-out infinite',
-        'divine-glow': 'divine-glow 2s ease-in-out infinite',
-        'sacred-float': 'sacred-float 4s ease-in-out infinite',
-        'blessed-shimmer': 'blessed-shimmer 2s linear infinite',
+        'holy-pulse': 'holy-pulse 4s ease-in-out infinite',
+        'divine-glow': 'divine-glow 3s ease-in-out infinite',
+        'sacred-float': 'sacred-float 6s ease-in-out infinite',
+        'blessed-shimmer': 'blessed-shimmer 3s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },

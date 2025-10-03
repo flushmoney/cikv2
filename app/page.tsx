@@ -48,40 +48,42 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      {/* Holy Background Effects */}
-      <div className="absolute inset-0 bg-holy-glow opacity-30 animate-divine-glow" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-primary/20 to-transparent rounded-full blur-3xl animate-sacred-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-secondary/20 to-transparent rounded-full blur-3xl animate-sacred-float" style={{ animationDelay: '2s' }} />
+      {/* Background Effects - matching christisking.io */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-gradient-radial from-yellow-400/10 to-transparent rounded-full blur-3xl animate-sacred-float" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-gradient-radial from-orange-400/8 to-transparent rounded-full blur-3xl animate-sacred-float" style={{ animationDelay: '3s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-yellow-500/5 to-transparent rounded-full blur-3xl animate-divine-glow" />
+      </div>
       
-      <div className="relative z-10 space-y-24 px-4 py-16">
+      <div className="relative z-10 space-y-32 px-4 py-20">
         {/* Hero Section */}
         <section className="relative">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-20 items-center">
               {/* Content */}
               <motion.div
-                className="space-y-8 text-center lg:text-left"
-                initial={{ opacity: 0, x: -50 }}
+                className="space-y-10 text-center lg:text-left"
+                initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
               >
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <motion.div
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full holy-card text-sm font-medium"
+                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full cik-card text-sm font-medium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <Crown className="w-4 h-4 text-primary" />
-                    <span className="sacred-text">Christ is King</span>
+                    <Crown className="w-4 h-4 text-yellow-400" />
+                    <span className="cik-text">Christ is King</span>
                   </motion.div>
                   
-                  <h1 className="hero-title">
-                    <span className="block">CIK Transfer</span>
-                    <span className="block sacred-text animate-holy-pulse">Bot</span>
+                  <h1 className="cik-hero-title">
+                    <span className="block text-white">CIK Transfer</span>
+                    <span className="block cik-text">Bot</span>
                   </h1>
                   
-                  <p className="text-xl text-white/80 leading-relaxed max-w-2xl text-balance">
+                  <p className="text-xl text-white/70 leading-relaxed max-w-2xl text-balance font-light">
                     Send $CIK tokens on Base chain with divine UX. 
                     Resolve handles, scan QR codes, and track transactions with heavenly precision.
                   </p>
@@ -90,10 +92,9 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   {isConnected ? (
                     <Link href="/transfer">
-                      <Button size="lg" className="divine-button group px-8 py-4 text-lg">
-                        <Star className="w-5 h-5 mr-2" />
-                        Start Divine Transfer
-                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <Button size="lg" className="cik-button px-8 py-4 text-base font-bold rounded-lg">
+                        Start Transfer
+                        <ArrowRight className="w-5 h-5 ml-2" />
                       </Button>
                     </Link>
                   ) : (
@@ -113,10 +114,10 @@ export default function Home() {
                             <Button
                               onClick={openConnectModal}
                               size="lg"
-                              className="divine-button group px-8 py-4 text-lg"
+                              className="cik-button px-8 py-4 text-base font-bold rounded-lg"
                             >
                               <Wallet className="w-5 h-5 mr-2" />
-                              Connect Sacred Wallet
+                              Connect Wallet
                             </Button>
                           </div>
                         );
@@ -128,15 +129,15 @@ export default function Home() {
                     <Button 
                       variant="outline" 
                       size="lg" 
-                      className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-4 text-lg holy-glow"
+                      className="border-yellow-400/20 text-yellow-400 hover:bg-yellow-400/5 px-8 py-4 text-base font-medium rounded-lg cik-glow"
                     >
-                      Try Holy Terminal
+                      Try Terminal
                     </Button>
                   </Link>
                 </div>
 
                 <motion.div
-                  className="pt-4"
+                  className="pt-6"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
@@ -148,12 +149,12 @@ export default function Home() {
               {/* Hero Image */}
               <motion.div
                 className="relative"
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
               >
-                <div className="relative w-full aspect-square max-w-lg mx-auto holy-glow">
-                  <div className="absolute inset-0 bg-gradient-radial from-primary/30 via-secondary/20 to-transparent rounded-full animate-holy-pulse" />
+                <div className="relative w-full aspect-square max-w-lg mx-auto">
+                  <div className="absolute inset-0 bg-gradient-radial from-yellow-400/20 via-orange-400/10 to-transparent rounded-full animate-holy-pulse" />
                   <Image
                     src="/cik/hero.png"
                     alt="CIK Sacred Art - Christ is King"
@@ -168,18 +169,18 @@ export default function Home() {
         </section>
 
         {/* Features */}
-        <section className="max-w-7xl mx-auto space-y-16">
+        <section className="max-w-7xl mx-auto space-y-20">
           <motion.div
-            className="text-center space-y-4"
+            className="text-center space-y-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="display-title">
-              <span className="sacred-text">Divine Features</span>
+            <h2 className="cik-display-title">
+              <span className="cik-text">Divine Features</span>
             </h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto text-balance">
+            <p className="text-xl text-white/60 max-w-2xl mx-auto text-balance font-light">
               Built with heavenly precision for the faithful
             </p>
           </motion.div>
@@ -192,17 +193,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -4 }}
               >
-                <Card className="holy-card p-8 h-full hover:shadow-holy transition-all duration-300 group">
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Card className="cik-card p-8 h-full hover:border-yellow-400/20 transition-all duration-300 group rounded-xl">
+                  <div className="space-y-5">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <feature.icon className="w-6 h-6 text-black" />
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors">
                       {feature.title}
                     </h3>
-                    <p className="text-white/70 leading-relaxed">
+                    <p className="text-white/60 leading-relaxed font-light">
                       {feature.description}
                     </p>
                   </div>
@@ -213,18 +214,18 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="max-w-4xl mx-auto text-center space-y-12">
+        <section className="max-w-4xl mx-auto text-center space-y-16">
           <motion.div
-            className="space-y-6"
+            className="space-y-8"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="display-title">
-              Ready for <span className="sacred-text">Divine Transfer?</span>
+            <h2 className="cik-display-title">
+              Ready for <span className="cik-text">Divine Transfer?</span>
             </h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto text-balance">
+            <p className="text-xl text-white/60 max-w-3xl mx-auto text-balance font-light">
               Experience the most blessed way to send $CIK tokens on Base chain. 
               Join the faithful in spreading the word through divine transactions.
             </p>
@@ -240,11 +241,10 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="divine-button px-8 py-4 text-lg"
+              className="cik-button px-8 py-4 text-base font-bold rounded-lg"
             >
               <Link href="https://christisking.io/whitepaper" target="_blank">
-                <Crown className="w-5 h-5 mr-2" />
-                Read Sacred Whitepaper
+                Read Whitepaper
               </Link>
             </Button>
             
@@ -252,10 +252,9 @@ export default function Home() {
               asChild
               variant="outline"
               size="lg"
-              className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-4 text-lg holy-glow"
+              className="border-yellow-400/20 text-yellow-400 hover:bg-yellow-400/5 px-8 py-4 text-base font-medium rounded-lg cik-glow"
             >
               <Link href="https://christisking.io/buy" target="_blank">
-                <Star className="w-5 h-5 mr-2" />
                 How to Buy $CIK
               </Link>
             </Button>
