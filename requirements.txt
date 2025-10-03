@@ -1,4 +1,4 @@
-fastapi
+﻿fastapi
 uvicorn[standard]
 web3==6.*
 eth-account

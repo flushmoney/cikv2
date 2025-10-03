@@ -35,7 +35,7 @@ const config: Config = {
           foreground: '#FFFFFF',
         },
         card: {
-          DEFAULT: 'rgba(3, 145, 153, 0.03)',
+          DEFAULT: '#FFFFFF',
           foreground: '#0D0D0D',
         },
         popover: {
@@ -43,19 +43,19 @@ const config: Config = {
           foreground: '#0D0D0D',
         },
         secondary: {
-          DEFAULT: 'rgba(3, 145, 153, 0.08)',
+          DEFAULT: '#F5F5F5',
           foreground: '#0D0D0D',
         },
         muted: {
-          DEFAULT: 'rgba(3, 145, 153, 0.05)',
+          DEFAULT: '#F5F5F5',
           foreground: 'rgba(13, 13, 13, 0.6)',
         },
         destructive: {
           DEFAULT: '#EF4444',
           foreground: '#FFFFFF',
         },
-        border: 'rgba(3, 145, 153, 0.15)',
-        input: 'rgba(3, 145, 153, 0.1)',
+        border: '#160505',
+        input: '#E5E5E5',
         ring: '#039199',
       },
       fontFamily: {
@@ -124,9 +124,10 @@ const config: Config = {
         'slide-in-left': 'slide-in-left 0.6s ease-out',
       },
       boxShadow: {
-        'cik': '0 4px 16px rgba(3, 145, 153, 0.12)',
-        'cik-lg': '0 8px 32px rgba(3, 145, 153, 0.18)',
-        'cik-xl': '0 12px 48px rgba(3, 145, 153, 0.25)',
+        'cik': '4px 4px 0 #000000',
+        'cik-lg': '6px 6px 0 #000000',
+        'cik-xl': '8px 8px 0 #000000',
+        'subtle': '0 2px 8px rgba(0, 0, 0, 0.05)',
       },
     },
   },

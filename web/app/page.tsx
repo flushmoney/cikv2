@@ -42,32 +42,32 @@ export default function Home() {
   const { isConnected } = useAccount();
 
   return (
-    <div className="space-y-24">
-      <section className="relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <div>
+      <section className="relative pt-32 pb-24">
+        <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
           <motion.div
-            className="space-y-8"
+            className="space-y-10"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
             <div className="space-y-6">
-              <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+              <h1 className="text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]">
                 CIK Transfer
-                <span className="block gradient-text mt-2">Bot</span>
+                <span className="block gradient-text mt-3">Bot</span>
               </h1>
-              <p className="text-xl text-foreground/70 leading-relaxed">
+              <p className="text-2xl text-foreground/70 leading-relaxed font-light">
                 Send $CIK tokens on Base chain with beautiful UX.
                 Resolve handles, scan QR codes, and track transactions in real-time.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-5">
               {isConnected ? (
                 <Link href="/transfer">
-                  <Button size="lg" className="glow-button group bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base">
+                  <Button variant="secondary" size="lg" className="text-base font-medium">
                     Start Transfer
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
               ) : (
@@ -86,8 +86,9 @@ export default function Home() {
                       >
                         <Button
                           onClick={openConnectModal}
+                          variant="secondary"
                           size="lg"
-                          className="glow-button group bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base"
+                          className="text-base font-medium"
                         >
                           <Wallet className="w-5 h-5 mr-2" />
                           Connect Wallet
@@ -99,13 +100,13 @@ export default function Home() {
               )}
 
               <Link href="/terminal">
-                <Button variant="outline" size="lg" className="border-primary/30 text-primary hover:bg-primary/5 rounded-cik-sm px-8 py-6 text-base">
+                <Button variant="default" size="lg" className="text-base font-medium">
                   Try Terminal
                 </Button>
               </Link>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-6">
               <ContractChip />
             </div>
           </motion.div>
@@ -121,7 +122,7 @@ export default function Home() {
                 src="/cik/hero.png"
                 alt="CIK Sacred Art"
                 fill
-                className="object-contain drop-shadow-2xl"
+                className="object-contain"
                 priority
               />
             </div>
@@ -129,76 +130,74 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-12">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <h2 className="text-4xl font-bold mb-4">Powerful Features</h2>
-          <p className="text-foreground/60 text-lg">
-            Built for the modern crypto experience
-          </p>
-        </motion.div>
+      <section className="py-32 bg-gradient-to-b from-white to-primary/5">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">Powerful Features</h2>
+            <p className="text-foreground/60 text-xl font-light">
+              Built for the modern crypto experience
+            </p>
+          </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
-            >
-              <Card className="glass-card p-8 h-full group cursor-default">
-                <feature.icon className="w-10 h-10 text-primary mb-5" />
-                <h3 className="font-semibold text-lg mb-3">{feature.title}</h3>
-                <p className="text-foreground/60 text-sm leading-relaxed">{feature.description}</p>
-              </Card>
-            </motion.div>
-          ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+              >
+                <Card className="p-10 h-full cursor-default hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                  <feature.icon className="w-12 h-12 text-primary mb-6" />
+                  <h3 className="font-bold text-xl mb-4">{feature.title}</h3>
+                  <p className="text-foreground/60 leading-relaxed">{feature.description}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="text-center space-y-10 py-12">
+      <section className="text-center py-40 px-4">
         <motion.div
-          className="space-y-5"
+          className="space-y-8 max-w-4xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <h2 className="text-5xl font-bold">Ready to Transfer?</h2>
-          <p className="text-foreground/60 text-lg max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-6xl lg:text-7xl font-bold">Ready to Transfer?</h2>
+          <p className="text-foreground/60 text-2xl max-w-3xl mx-auto leading-relaxed font-light">
             Experience the fastest and most intuitive way to send $CIK tokens on Base chain.
           </p>
-        </motion.div>
 
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
-        >
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base shadow-cik-lg"
-          >
-            <Link href="https://christisking.io/whitepaper" target="_blank">
-              Read Whitepaper
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="text-base font-medium"
+            >
+              <Link href="https://christisking.io/whitepaper" target="_blank">
+                Read Whitepaper
+              </Link>
+            </Button>
 
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="accent-button rounded-cik-sm px-8 py-6 text-base shadow-cik"
-          >
-            <Link href="https://christisking.io/buy" target="_blank">
-              How to Buy $CIK
-            </Link>
-          </Button>
+            <Button
+              asChild
+              variant="default"
+              size="lg"
+              className="text-base font-medium"
+            >
+              <Link href="https://christisking.io/buy" target="_blank">
+                How to Buy $CIK
+              </Link>
+            </Button>
+          </div>
         </motion.div>
       </section>
     </div>
