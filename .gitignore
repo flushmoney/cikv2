@@ -1,0 +1,29 @@
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+.venv/
+__pycache__/
+
+# Tests/Coverage
+coverage/

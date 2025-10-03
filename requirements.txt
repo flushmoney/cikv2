@@ -1,0 +1,7 @@
+﻿fastapi
+uvicorn[standard]
+web3==6.*
+eth-account
+python-dotenv
+playwright
+pydantic
