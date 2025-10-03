@@ -79,7 +79,7 @@ export default function Home() {
                   </motion.div>
                   
                   <h1 className="cik-hero-title">
-                    <span className="block text-white">CIK Transfer</span>
+                    <span className="block text-white">CIK Fuck</span>
                     <span className="block cik-text">Bot</span>
                   </h1>
                   
