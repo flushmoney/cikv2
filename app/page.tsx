@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Wallet, QrCode, FileText, Zap, Globe, Shield } from 'lucide-react';
+import { ArrowRight, Wallet, QrCode, FileText, Zap, Globe, Shield, Crown, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import ContractChip from '@/components/contract-chip';
@@ -36,177 +36,232 @@ const features = [
     title: 'Tx Timeline',
     description: 'Real-time transaction status updates'
   },
+  {
+    icon: Crown,
+    title: 'Divine Security',
+    description: 'Protected by the highest authority'
+  },
 ];
 
 export default function Home() {
   const { isConnected } = useAccount();
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      {/* Holy Background Effects */}
+      <div className="absolute inset-0 bg-holy-glow opacity-30 animate-divine-glow" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-radial from-primary/20 to-transparent rounded-full blur-3xl animate-sacred-float" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-radial from-secondary/20 to-transparent rounded-full blur-3xl animate-sacred-float" style={{ animationDelay: '2s' }} />
+      
+      <div className="relative z-10 space-y-24 px-4 py-16">
+        {/* Hero Section */}
+        <section className="relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Content */}
+              <motion.div
+                className="space-y-8 text-center lg:text-left"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <div className="space-y-6">
+                  <motion.div
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full holy-card text-sm font-medium"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <Crown className="w-4 h-4 text-primary" />
+                    <span className="sacred-text">Christ is King</span>
+                  </motion.div>
+                  
+                  <h1 className="hero-title">
+                    <span className="block">CIK Transfer</span>
+                    <span className="block sacred-text animate-holy-pulse">Bot</span>
+                  </h1>
+                  
+                  <p className="text-xl text-white/80 leading-relaxed max-w-2xl text-balance">
+                    Send $CIK tokens on Base chain with divine UX. 
+                    Resolve handles, scan QR codes, and track transactions with heavenly precision.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  {isConnected ? (
+                    <Link href="/transfer">
+                      <Button size="lg" className="divine-button group px-8 py-4 text-lg">
+                        <Star className="w-5 h-5 mr-2" />
+                        Start Divine Transfer
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <ConnectButton.Custom>
+                      {({ account, chain, openConnectModal, mounted }) => {
+                        return (
+                          <div
+                            {...(!mounted && {
+                              'aria-hidden': true,
+                              style: {
+                                opacity: 0,
+                                pointerEvents: 'none',
+                                userSelect: 'none',
+                              },
+                            })}
+                          >
+                            <Button
+                              onClick={openConnectModal}
+                              size="lg"
+                              className="divine-button group px-8 py-4 text-lg"
+                            >
+                              <Wallet className="w-5 h-5 mr-2" />
+                              Connect Sacred Wallet
+                            </Button>
+                          </div>
+                        );
+                      }}
+                    </ConnectButton.Custom>
+                  )}
+                  
+                  <Link href="/terminal">
+                    <Button 
+                      variant="outline" 
+                      size="lg" 
+                      className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-4 text-lg holy-glow"
+                    >
+                      Try Holy Terminal
+                    </Button>
+                  </Link>
+                </div>
+
+                <motion.div
+                  className="pt-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                >
+                  <ContractChip />
+                </motion.div>
+              </motion.div>
+
+              {/* Hero Image */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <div className="relative w-full aspect-square max-w-lg mx-auto holy-glow">
+                  <div className="absolute inset-0 bg-gradient-radial from-primary/30 via-secondary/20 to-transparent rounded-full animate-holy-pulse" />
+                  <Image
+                    src="/cik/hero.png"
+                    alt="CIK Sacred Art - Christ is King"
+                    fill
+                    className="object-contain relative z-10 animate-sacred-float"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Features */}
+        <section className="max-w-7xl mx-auto space-y-16">
           <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            className="text-center space-y-4"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <div className="space-y-4">
-              <h1 className="text-6xl font-bold tracking-tight">
-                CIK Transfer
-                <span className="block text-primary">Bot</span>
-              </h1>
-              <p className="text-xl text-white/70 leading-relaxed">
-                Send $CIK tokens on Base chain with beautiful UX. 
-                Resolve handles, scan QR codes, and track transactions in real-time.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              {isConnected ? (
-                <Link href="/transfer">
-                  <Button size="lg" className="glow-button group">
-                    Start Transfer
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-              ) : (
-                <ConnectButton.Custom>
-                  {({ account, chain, openConnectModal, mounted }) => {
-                    return (
-                      <div
-                        {...(!mounted && {
-                          'aria-hidden': true,
-                          style: {
-                            opacity: 0,
-                            pointerEvents: 'none',
-                            userSelect: 'none',
-                          },
-                        })}
-                      >
-                        <Button
-                          onClick={openConnectModal}
-                          size="lg"
-                          className="glow-button group"
-                        >
-                          <Wallet className="w-4 h-4 mr-2" />
-                          Connect Wallet
-                        </Button>
-                      </div>
-                    );
-                  }}
-                </ConnectButton.Custom>
-              )}
-              
-              <Link href="/terminal">
-                <Button variant="outline" size="lg" className="border-white/20">
-                  Try Terminal
-                </Button>
-              </Link>
-            </div>
-
-            <div className="pt-4">
-              <ContractChip />
-            </div>
+            <h2 className="display-title">
+              <span className="sacred-text">Divine Features</span>
+            </h2>
+            <p className="text-xl text-white/70 max-w-2xl mx-auto text-balance">
+              Built with heavenly precision for the faithful
+            </p>
           </motion.div>
 
-          {/* Hero Image */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+              >
+                <Card className="holy-card p-8 h-full hover:shadow-holy transition-all duration-300 group">
+                  <div className="space-y-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <feature.icon className="w-6 h-6 text-black" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="max-w-4xl mx-auto text-center space-y-12">
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <Image
-                src="/cik/hero.png"
-                alt="CIK Sacred Art"
-                fill
-                className="object-contain"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
-            </div>
+            <h2 className="display-title">
+              Ready for <span className="sacred-text">Divine Transfer?</span>
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto text-balance">
+              Experience the most blessed way to send $CIK tokens on Base chain. 
+              Join the faithful in spreading the word through divine transactions.
+            </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Features */}
-      <section className="space-y-8">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
-          <p className="text-white/70 text-lg">
-            Built for the modern crypto experience
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
+          <motion.div
+            className="flex flex-col sm:flex-row gap-6 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Button
+              asChild
+              size="lg"
+              className="divine-button px-8 py-4 text-lg"
             >
-              <Card className="glass-card border-white/10 p-6 h-full hover:border-white/20 transition-colors">
-                <feature.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-white/60 text-sm">{feature.description}</p>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="text-center space-y-8">
-        <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-        >
-          <h2 className="text-4xl font-bold">Ready to Transfer?</h2>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Experience the fastest and most intuitive way to send $CIK tokens on Base chain.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0 }}
-        >
-          <Button
-            asChild
-            size="lg"
-            className="glow-button"
-          >
-            <Link href="https://christisking.io/whitepaper" target="_blank">
-              Read Whitepaper
-            </Link>
-          </Button>
-          
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-white/20"
-          >
-            <Link href="https://christisking.io/buy" target="_blank">
-              How to Buy $CIK
-            </Link>
-          </Button>
-        </motion.div>
-      </section>
+              <Link href="https://christisking.io/whitepaper" target="_blank">
+                <Crown className="w-5 h-5 mr-2" />
+                Read Sacred Whitepaper
+              </Link>
+            </Button>
+            
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-4 text-lg holy-glow"
+            >
+              <Link href="https://christisking.io/buy" target="_blank">
+                <Star className="w-5 h-5 mr-2" />
+                How to Buy $CIK
+              </Link>
+            </Button>
+          </motion.div>
+        </section>
+      </div>
     </div>
   );
 }
