@@ -1,124 +1,76 @@
-@@ .. @@
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
--@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
- :root {
--  --font-inter: 'Inter', sans-serif;
-+  --font-sans: 'Inter', system-ui, sans-serif;
-+  --font-mono: 'JetBrains Mono', monospace;
-   --radius: 1rem;
- }
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --radius: 1rem;
+}
 
- * {
-   box-sizing: border-box;
- }
+* {
+  box-sizing: border-box;
+}
 
- html {
-   scroll-behavior: smooth;
- }
+html {
+  scroll-behavior: smooth;
+}
 
- body {
--  font-family: var(--font-inter);
--  background: #0A0B0F;
-+  font-family: var(--font-sans);
-+  background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
-+  background-attachment: fixed;
-   color: #FFFFFF;
-   overflow-x: hidden;
-+  min-height: 100vh;
- }
+body {
+  font-family: var(--font-inter);
+  background: #000000;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
 
- .glass-card {
--  background: rgba(255, 255, 255, 0.05);
--  backdrop-filter: blur(20px);
--  border: 1px solid rgba(255, 255, 255, 0.1);
-+  background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-+  backdrop-filter: blur(25px);
-+  border: 1px solid rgba(255, 215, 0, 0.2);
-+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
- }
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
 
- .glow-button {
-   position: relative;
-   transition: all 0.2s ease-in-out;
-+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-+  color: #000000;
-+  font-weight: 600;
- }
+.glow-button {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000000;
+  font-weight: 600;
+}
 
- .glow-button:hover {
--  box-shadow: 0 0 20px rgba(0, 1, 254, 0.3);
-+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-   transform: translateY(-1px);
-+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
- }
+.glow-button:hover {
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transform: translateY(-1px);
+}
 
- .glow-button:active {
-   transform: scale(0.98);
- }
+.glow-button:active {
+  transform: scale(0.98);
+}
 
-+.hero-text {
-+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-+  -webkit-background-clip: text;
-+  -webkit-text-fill-color: transparent;
-+  background-clip: text;
-+  animation: pulse-gold 3s ease-in-out infinite;
-+}
-+
-+.sacred-border {
-+  border: 2px solid transparent;
-+  background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)) padding-box,
-+              linear-gradient(135deg, #FFD700, #FFA500, #FFD700) border-box;
-+}
-+
- .tabular-nums {
-   font-variant-numeric: tabular-nums;
- }
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
 
- /* Focus styles for accessibility */
- .focus-ring:focus-visible {
--  outline: 2px solid #0001FE;
-+  outline: 2px solid #FFD700;
-   outline-offset: 2px;
- }
+/* Focus styles for accessibility */
+.focus-ring:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
 
- /* Scrollbar styling */
- ::-webkit-scrollbar {
-   width: 6px;
- }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
- ::-webkit-scrollbar-track {
--  background: rgba(255, 255, 255, 0.05);
-+  background: rgba(26, 26, 46, 0.3);
- }
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
 
- ::-webkit-scrollbar-thumb {
--  background: rgba(255, 255, 255, 0.2);
-+  background: rgba(255, 215, 0, 0.3);
-   border-radius: 3px;
- }
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 3px;
+}
 
- ::-webkit-scrollbar-thumb:hover {
--  background: rgba(255, 255, 255, 0.3);
-+  background: rgba(255, 215, 0, 0.5);
-+}
-+
-+/* Custom animations for sacred elements */
-+@keyframes divine-pulse {
-+  0%, 100% { 
-+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-+    transform: scale(1);
-+  }
-+  50% { 
-+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
-+    transform: scale(1.02);
-+  }
-+}
-+
-+.divine-glow {
-+  animation: divine-pulse 4s ease-in-out infinite;
- }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5);
+}

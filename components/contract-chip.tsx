@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Copy, ExternalLink, Check, Crown } from 'lucide-react';
+import { Copy, ExternalLink, Check } from 'lucide-react';
 import { useState } from 'react';
 import { CIK_TOKEN_ADDRESS } from '@/lib/contracts';
 
@@ -24,18 +24,15 @@ export default function ContractChip() {
 
   return (
     <motion.div
-      className="glass-card sacred-border rounded-2xl p-6 shadow-xl"
+      className="glass-card rounded-2xl p-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between">
         <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Crown className="w-4 h-4 text-primary" />
-            <h3 className="text-sm font-bold text-primary">Sacred $CIK Contract</h3>
-          </div>
-          <p className="font-mono text-sm tabular-nums text-white/90 font-medium">
+          <h3 className="text-sm font-medium text-white/70 mb-1">$CIK Contract</h3>
+          <p className="font-mono text-sm tabular-nums">
             {CIK_TOKEN_ADDRESS?.slice(0, 6)}...{CIK_TOKEN_ADDRESS?.slice(-4)}
           </p>
         </div>
@@ -43,26 +40,26 @@ export default function ContractChip() {
         <div className="flex items-center space-x-2">
           <motion.button
             onClick={handleCopy}
-            className="p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-all duration-200 focus-ring border border-primary/20"
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors focus-ring"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             aria-label="Copy contract address"
           >
             {copied ? (
-              <Check className="w-4 h-4 text-primary" />
+              <Check className="w-4 h-4 text-green-400" />
             ) : (
-              <Copy className="w-4 h-4 text-primary" />
+              <Copy className="w-4 h-4 text-white/70" />
             )}
           </motion.button>
           
           <motion.button
             onClick={openEtherscan}
-            className="p-3 rounded-lg bg-primary/10 hover:bg-primary/20 transition-all duration-200 focus-ring border border-primary/20"
+            className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors focus-ring"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             aria-label="View on BaseScan"
           >
-            <ExternalLink className="w-4 h-4 text-primary" />
+            <ExternalLink className="w-4 h-4 text-white/70" />
           </motion.button>
         </div>
       </div>
