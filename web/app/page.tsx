@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Wallet, QrCode, FileText, Zap, Globe, Shield } from 'lucide-react';
+import { ArrowRight, Wallet, QrCode, FileText, Zap, Globe, Shield, Users, TrendingUp, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import ContractChip from '@/components/contract-chip';
@@ -36,101 +36,198 @@ const features = [
     title: 'Tx Timeline',
     description: 'Real-time transaction status updates'
   },
+  {
+    icon: Lock,
+    title: 'Secure',
+    description: 'Built on Base blockchain security'
+  },
+];
+
+const stats = [
+  { icon: Users, value: '2.4B', label: 'Christians Worldwide' },
+  { icon: TrendingUp, value: '100%', label: 'Community Driven' },
+  { icon: Shield, value: 'Base', label: 'Blockchain Network' },
 ];
 
 export default function Home() {
   const { isConnected } = useAccount();
 
   return (
-    <div>
-      <section className="relative pt-32 pb-24">
-        <div className="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
+    <div className="relative overflow-hidden">
+      {/* Decorative clouds background */}
+      <div className="absolute top-20 left-10 opacity-10 pointer-events-none">
+        <Image src="/assets/image10.png" alt="" width={300} height={200} />
+      </div>
+      <div className="absolute top-40 right-10 opacity-10 pointer-events-none">
+        <Image src="/assets/image10.png" alt="" width={250} height={150} />
+      </div>
+
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-24 px-4">
+        <div className="max-w-7xl mx-auto">
+          {/* CHRIST IS KING Logo */}
           <motion.div
-            className="space-y-10"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="space-y-6">
-              <h1 className="text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]">
-                CIK Transfer
-                <span className="block gradient-text mt-3">Bot</span>
-              </h1>
-              <p className="text-2xl text-foreground/70 leading-relaxed font-light">
-                Send $CIK tokens on Base chain with beautiful UX.
-                Resolve handles, scan QR codes, and track transactions in real-time.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-5">
-              {isConnected ? (
-                <Link href="/transfer">
-                  <Button variant="secondary" size="lg" className="text-base font-medium">
-                    Start Transfer
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-              ) : (
-                <ConnectButton.Custom>
-                  {({ account, chain, openConnectModal, mounted }) => {
-                    return (
-                      <div
-                        {...(!mounted && {
-                          'aria-hidden': true,
-                          style: {
-                            opacity: 0,
-                            pointerEvents: 'none',
-                            userSelect: 'none',
-                          },
-                        })}
-                      >
-                        <Button
-                          onClick={openConnectModal}
-                          variant="secondary"
-                          size="lg"
-                          className="text-base font-medium"
-                        >
-                          <Wallet className="w-5 h-5 mr-2" />
-                          Connect Wallet
-                        </Button>
-                      </div>
-                    );
-                  }}
-                </ConnectButton.Custom>
-              )}
-
-              <Link href="/terminal">
-                <Button variant="default" size="lg" className="text-base font-medium">
-                  Try Terminal
-                </Button>
-              </Link>
-            </div>
-
-            <div className="pt-6">
-              <ContractChip />
-            </div>
+            <Image
+              src="/assets/image6.png"
+              alt="CHRIST IS KING"
+              width={800}
+              height={100}
+              className="mx-auto"
+              priority
+            />
           </motion.div>
 
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="space-y-6">
+                <h1 className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                  CIK Transfer Bot
+                </h1>
+                <p className="text-xl lg:text-2xl text-foreground/70 leading-relaxed font-light">
+                  Send $CIK tokens on Base chain with beautiful UX.
+                  Resolve handles, scan QR codes, and track transactions in real-time.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-5">
+                {isConnected ? (
+                  <Link href="/transfer">
+                    <Button variant="secondary" size="lg" className="text-base font-medium w-full sm:w-auto">
+                      Start Transfer
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                ) : (
+                  <ConnectButton.Custom>
+                    {({ account, chain, openConnectModal, mounted }) => {
+                      return (
+                        <div
+                          {...(!mounted && {
+                            'aria-hidden': true,
+                            style: {
+                              opacity: 0,
+                              pointerEvents: 'none',
+                              userSelect: 'none',
+                            },
+                          })}
+                          className="w-full sm:w-auto"
+                        >
+                          <Button
+                            onClick={openConnectModal}
+                            variant="secondary"
+                            size="lg"
+                            className="text-base font-medium w-full"
+                          >
+                            <Wallet className="w-5 h-5 mr-2" />
+                            Connect Wallet
+                          </Button>
+                        </div>
+                      );
+                    }}
+                  </ConnectButton.Custom>
+                )}
+
+                <Link href="/terminal" className="w-full sm:w-auto">
+                  <Button variant="default" size="lg" className="text-base font-medium w-full">
+                    Try Terminal
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="pt-4">
+                <ContractChip />
+              </div>
+            </motion.div>
+
+            {/* Hero Mascot */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <div className="relative w-full aspect-square max-w-md mx-auto">
+                <Image
+                  src="/assets/image1.png"
+                  alt="Christ Mascot"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Stats Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-white to-primary/5 relative">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
           >
-            <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <Image
-                src="/cik/hero.png"
-                alt="CIK Sacred Art"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+            <Image
+              src="/assets/image16.png"
+              alt="2.4 Billion Christians Worldwide"
+              width={900}
+              height={80}
+              className="mx-auto mb-8"
+            />
+            <p className="text-xl text-foreground/60 font-light max-w-3xl mx-auto">
+              Join the largest faith-based community in crypto
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 + index * 0.1 }}
+              >
+                <Card className="p-8 text-center hover:translate-x-[-2px] hover:translate-y-[-2px]">
+                  <stat.icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <p className="text-4xl font-bold gradient-text mb-2">{stat.value}</p>
+                  <p className="text-foreground/60">{stat.label}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Community Image */}
+          <motion.div
+            className="relative w-full max-w-4xl mx-auto rounded-[40px] overflow-hidden border border-border shadow-cik-lg"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <Image
+              src="/assets/image4.png"
+              alt="Community"
+              width={1200}
+              height={600}
+              className="w-full h-auto"
+            />
           </motion.div>
         </div>
       </section>
 
-      <section className="py-32 bg-gradient-to-b from-white to-primary/5">
+      {/* Features */}
+      <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -163,15 +260,33 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="text-center py-40 px-4">
+      {/* CTA Section */}
+      <section className="text-center py-32 px-4 bg-gradient-to-b from-primary/5 to-white relative">
+        <div className="absolute bottom-10 left-10 opacity-10 pointer-events-none hidden lg:block">
+          <Image src="/assets/image10.png" alt="" width={200} height={150} />
+        </div>
+        <div className="absolute bottom-20 right-10 opacity-10 pointer-events-none hidden lg:block">
+          <Image src="/assets/image10.png" alt="" width={250} height={150} />
+        </div>
+
         <motion.div
-          className="space-y-8 max-w-4xl mx-auto"
+          className="space-y-8 max-w-4xl mx-auto relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <h2 className="text-6xl lg:text-7xl font-bold">Ready to Transfer?</h2>
-          <p className="text-foreground/60 text-2xl max-w-3xl mx-auto leading-relaxed font-light">
+          <div className="mb-8">
+            <Image
+              src="/assets/image21.jpg"
+              alt="Swap ETH for CIK"
+              width={400}
+              height={80}
+              className="mx-auto mb-6"
+            />
+          </div>
+
+          <h2 className="text-5xl lg:text-6xl font-bold">Ready to Transfer?</h2>
+          <p className="text-foreground/60 text-xl max-w-3xl mx-auto leading-relaxed font-light">
             Experience the fastest and most intuitive way to send $CIK tokens on Base chain.
           </p>
 
@@ -197,6 +312,23 @@ export default function Home() {
                 How to Buy $CIK
               </Link>
             </Button>
+          </div>
+
+          {/* Lamb Logo */}
+          <div className="pt-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2 }}
+            >
+              <Image
+                src="/assets/image2.png"
+                alt="CIK Logo"
+                width={100}
+                height={100}
+                className="mx-auto opacity-80"
+              />
+            </motion.div>
           </div>
         </motion.div>
       </section>
