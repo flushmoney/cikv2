@@ -84,7 +84,7 @@ export default function Home() {
                   </h1>
                   
                   <p className="text-xl text-white/70 leading-relaxed max-w-2xl text-balance font-light">
-                    Send $CIK tokens on Base chain with divine UX. 
+                    Send $CIK tokens on Base chain with fucking UX. 
                     Resolve handles, scan QR codes, and track transactions with heavenly precision.
                   </p>
                 </div>
