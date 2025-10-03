@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Luckiest+Guy&display=swap');
+
+@font-face {
+  font-family: 'ST-Izhora';
+  src: url('https://christisking.io/fonts/ST-Izhora-free-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --font-inter: 'Inter', sans-serif;
-  --radius: 1rem;
+  --font-open-sans: 'Open Sans', sans-serif;
+  --font-luckiest: 'Luckiest Guy', cursive;
+  --font-izhora: 'ST-Izhora', serif;
+  --radius: 2.5rem;
+
+  --color-primary: #039199;
+  --color-primary-light: #209BB7;
+  --color-primary-lighter: #3BC1BC;
+  --color-accent: rgb(245, 166, 31);
+  --color-text-dark: #0D0D0D;
+  --color-text-black: #000000;
 }
 
 * {
@@ -19,55 +37,150 @@ html {
 
 body {
   font-family: var(--font-inter);
-  background: #000000;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: var(--color-text-dark);
   overflow-x: hidden;
+  line-height: 1.5;
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(3, 145, 153, 0.03);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(3, 145, 153, 0.1);
+  border-radius: 40px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(3, 145, 153, 0.05);
+  border-color: rgba(3, 145, 153, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(3, 145, 153, 0.12);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #039199 0%, #209BB7 50%, #3BC1BC 100%);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #039199 0%, #209BB7 50%, #3BC1BC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .glow-button {
   position: relative;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(3, 145, 153, 0.2);
 }
 
 .glow-button:hover {
-  box-shadow: 0 0 20px rgba(0, 1, 254, 0.3);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(3, 145, 153, 0.35);
+  transform: translateY(-2px);
 }
 
 .glow-button:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
+}
+
+.accent-button {
+  background: var(--color-accent);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.accent-button:hover {
+  background: rgb(230, 155, 25);
+  box-shadow: 0 8px 24px rgba(245, 166, 31, 0.35);
 }
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Focus styles for accessibility */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .focus-ring:focus-visible {
-  outline: 2px solid #0001FE;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(3, 145, 153, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  background: rgba(3, 145, 153, 0.3);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(3, 145, 153, 0.5);
+}
+
+.rounded-cik {
+  border-radius: 40px;
+}
+
+.rounded-cik-sm {
+  border-radius: 32px;
+}
+
+.shadow-cik {
+  box-shadow: 0 4px 16px rgba(3, 145, 153, 0.12);
+}
+
+.shadow-cik-lg {
+  box-shadow: 0 8px 32px rgba(3, 145, 153, 0.18);
 }

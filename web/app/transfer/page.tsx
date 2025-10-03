@@ -130,7 +130,7 @@ export default function TransferPage() {
     return (
       <div className="text-center py-16">
         <h1 className="text-2xl font-bold mb-4">Connect Your Wallet</h1>
-        <p className="text-white/70 mb-8">
+        <p className="text-foreground/60 mb-8">
           Please connect your wallet to start making transfers.
         </p>
       </div>
@@ -144,25 +144,25 @@ export default function TransferPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h1 className="text-3xl font-bold mb-2">Send Tokens</h1>
-        <p className="text-white/70">Transfer tokens with ease and confidence</p>
+        <h1 className="text-4xl font-bold mb-3 gradient-text">Send Tokens</h1>
+        <p className="text-foreground/60 text-lg">Transfer tokens with ease and confidence</p>
       </motion.div>
 
-      <Card className="glass-card border-white/10 p-6 space-y-6">
+      <Card className="glass-card p-8 space-y-6 shadow-cik-lg">
         {/* From Section */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-white/70">From</label>
+          <label className="text-sm font-medium text-foreground/60">From</label>
           <TokenPicker
             selectedToken={selectedToken}
             onSelectToken={setSelectedToken}
           />
         </div>
 
-        <ArrowDown className="w-6 h-6 mx-auto text-white/50" />
+        <ArrowDown className="w-6 h-6 mx-auto text-primary/40" />
 
         {/* To Section */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-white/70">To</label>
+          <label className="text-sm font-medium text-foreground/60">To</label>
           <AddressInput
             value={toAddress}
             onChange={setToAddress}
@@ -172,7 +172,7 @@ export default function TransferPage() {
 
         {/* Amount Section */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-white/70">Amount</label>
+          <label className="text-sm font-medium text-foreground/60">Amount</label>
           <AmountPad
             value={amount}
             onChange={setAmount}
@@ -183,25 +183,25 @@ export default function TransferPage() {
 
         {/* Memo Section */}
         <div className="space-y-3">
-          <label className="text-sm font-medium text-white/70">Memo (optional)</label>
+          <label className="text-sm font-medium text-foreground/60">Memo (optional)</label>
           <Textarea
             placeholder="Add a note to your transfer..."
             value={memo}
             onChange={(e) => setMemo(e.target.value)}
-            className="glass-card border-white/10 text-white placeholder:text-white/50 focus:border-primary focus:ring-primary resize-none"
+            className="glass-card text-foreground placeholder:text-foreground/40 focus:border-primary focus:ring-primary resize-none"
             rows={3}
           />
         </div>
 
         {/* Fee Preview */}
-        <div className="glass-card rounded-xl p-4 space-y-2">
+        <div className="glass-card rounded-cik p-5 space-y-2 bg-primary/5">
           <div className="flex justify-between text-sm">
-            <span className="text-white/50">Network Fee</span>
+            <span className="text-foreground/50">Network Fee</span>
             <span className="font-mono tabular-nums">~0.001 ETH</span>
           </div>
-          <div className="flex justify-between font-medium">
+          <div className="flex justify-between font-medium text-lg">
             <span>You'll send</span>
-            <span className="tabular-nums">{amount} {selectedToken}</span>
+            <span className="tabular-nums text-primary">{amount} {selectedToken}</span>
           </div>
         </div>
 
@@ -209,10 +209,10 @@ export default function TransferPage() {
         <Button
           onClick={handleReview}
           disabled={!canProceed}
-          className="w-full glow-button"
+          className="w-full glow-button bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm py-6 text-base"
           size="lg"
         >
-          <Send className="w-4 h-4 mr-2" />
+          <Send className="w-5 h-5 mr-2" />
           Review & Send
         </Button>
 

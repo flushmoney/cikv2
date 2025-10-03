@@ -32,7 +32,7 @@ export default function ActivityPage() {
     return (
       <div className="text-center py-16">
         <h1 className="text-2xl font-bold mb-4">Connect Your Wallet</h1>
-        <p className="text-white/70 mb-8">
+        <p className="text-foreground/60 mb-8">
           Please connect your wallet to view your transaction activity.
         </p>
       </div>
@@ -46,20 +46,20 @@ export default function ActivityPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h1 className="text-3xl font-bold mb-2">Activity</h1>
-        <p className="text-white/70">Track all your $CIK transfers</p>
+        <h1 className="text-4xl font-bold mb-3 gradient-text">Activity</h1>
+        <p className="text-foreground/60 text-lg">Track all your $CIK transfers</p>
       </motion.div>
 
       {/* Filters */}
-      <Card className="glass-card border-white/10 p-6">
+      <Card className="glass-card p-6 shadow-cik">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/50" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-foreground/40" />
             <Input
               placeholder="Search by hash, address, or memo..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 glass-card border-white/10 text-white placeholder:text-white/50 focus:border-primary focus:ring-primary"
+              className="pl-10 glass-card text-foreground placeholder:text-foreground/40 focus:border-primary focus:ring-primary"
             />
           </div>
           
@@ -71,9 +71,9 @@ export default function ActivityPage() {
                 size="sm"
                 onClick={() => setFilterType(type)}
                 className={
-                  filterType === type 
-                    ? 'bg-primary text-primary-foreground' 
-                    : 'border-white/20 hover:border-white/40'
+                  filterType === type
+                    ? 'bg-gradient-cik text-white rounded-cik-sm'
+                    : 'border-primary/30 text-primary hover:bg-primary/5 rounded-cik-sm'
                 }
               >
                 {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -90,9 +90,9 @@ export default function ActivityPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="glass-card border-white/10 p-6 text-center">
-            <p className="text-2xl font-bold tabular-nums">2</p>
-            <p className="text-white/50 text-sm">Total Transfers</p>
+          <Card className="glass-card p-6 text-center shadow-cik">
+            <p className="text-3xl font-bold tabular-nums gradient-text">2</p>
+            <p className="text-foreground/50 text-sm mt-2">Total Transfers</p>
           </Card>
         </motion.div>
         
@@ -101,9 +101,9 @@ export default function ActivityPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="glass-card border-white/10 p-6 text-center">
-            <p className="text-2xl font-bold tabular-nums">150.75</p>
-            <p className="text-white/50 text-sm">$CIK Sent</p>
+          <Card className="glass-card p-6 text-center shadow-cik">
+            <p className="text-3xl font-bold tabular-nums gradient-text">150.75</p>
+            <p className="text-foreground/50 text-sm mt-2">$CIK Sent</p>
           </Card>
         </motion.div>
         
@@ -112,9 +112,9 @@ export default function ActivityPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="glass-card border-white/10 p-6 text-center">
-            <p className="text-2xl font-bold tabular-nums">1</p>
-            <p className="text-white/50 text-sm">Pending</p>
+          <Card className="glass-card p-6 text-center shadow-cik">
+            <p className="text-3xl font-bold tabular-nums gradient-text">1</p>
+            <p className="text-foreground/50 text-sm mt-2">Pending</p>
           </Card>
         </motion.div>
       </div>
@@ -130,7 +130,7 @@ export default function ActivityPage() {
           <Button
             variant="outline"
             size="sm"
-            className="border-white/20"
+            className="border-primary/30 text-primary hover:bg-primary/5 rounded-cik-sm"
             onClick={() => window.open('https://basescan.org', '_blank')}
           >
             <ExternalLink className="w-4 h-4 mr-2" />
@@ -141,8 +141,8 @@ export default function ActivityPage() {
         {filteredTransactions.length > 0 ? (
           <RecentTransfers limit={filteredTransactions.length} />
         ) : (
-          <Card className="glass-card border-white/10 p-12 text-center">
-            <p className="text-white/50">No transactions found</p>
+          <Card className="glass-card p-12 text-center shadow-cik">
+            <p className="text-foreground/50">No transactions found</p>
             {searchQuery && (
               <Button
                 variant="ghost"

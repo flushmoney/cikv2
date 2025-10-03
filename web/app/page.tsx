@@ -42,24 +42,22 @@ export default function Home() {
   const { isConnected } = useAccount();
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
+    <div className="space-y-24">
       <section className="relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="space-y-4">
-              <h1 className="text-6xl font-bold tracking-tight">
+            <div className="space-y-6">
+              <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
                 CIK Transfer
-                <span className="block text-primary">Bot</span>
+                <span className="block gradient-text mt-2">Bot</span>
               </h1>
-              <p className="text-xl text-white/70 leading-relaxed">
-                Send $CIK tokens on Base chain with beautiful UX. 
+              <p className="text-xl text-foreground/70 leading-relaxed">
+                Send $CIK tokens on Base chain with beautiful UX.
                 Resolve handles, scan QR codes, and track transactions in real-time.
               </p>
             </div>
@@ -67,9 +65,9 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               {isConnected ? (
                 <Link href="/transfer">
-                  <Button size="lg" className="glow-button group">
+                  <Button size="lg" className="glow-button group bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base">
                     Start Transfer
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               ) : (
@@ -89,9 +87,9 @@ export default function Home() {
                         <Button
                           onClick={openConnectModal}
                           size="lg"
-                          className="glow-button group"
+                          className="glow-button group bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base"
                         >
-                          <Wallet className="w-4 h-4 mr-2" />
+                          <Wallet className="w-5 h-5 mr-2" />
                           Connect Wallet
                         </Button>
                       </div>
@@ -99,9 +97,9 @@ export default function Home() {
                   }}
                 </ConnectButton.Custom>
               )}
-              
+
               <Link href="/terminal">
-                <Button variant="outline" size="lg" className="border-white/20">
+                <Button variant="outline" size="lg" className="border-primary/30 text-primary hover:bg-primary/5 rounded-cik-sm px-8 py-6 text-base">
                   Try Terminal
                 </Button>
               </Link>
@@ -112,7 +110,6 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Hero Image */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -124,25 +121,23 @@ export default function Home() {
                 src="/cik/hero.png"
                 alt="CIK Sacred Art"
                 fill
-                className="object-contain"
+                className="object-contain drop-shadow-2xl"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="space-y-8">
+      <section className="space-y-12">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
-          <p className="text-white/70 text-lg">
+          <h2 className="text-4xl font-bold mb-4">Powerful Features</h2>
+          <p className="text-foreground/60 text-lg">
             Built for the modern crypto experience
           </p>
         </motion.div>
@@ -155,26 +150,25 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 + index * 0.1 }}
             >
-              <Card className="glass-card border-white/10 p-6 h-full hover:border-white/20 transition-colors">
-                <feature.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-white/60 text-sm">{feature.description}</p>
+              <Card className="glass-card p-8 h-full group cursor-default">
+                <feature.icon className="w-10 h-10 text-primary mb-5" />
+                <h3 className="font-semibold text-lg mb-3">{feature.title}</h3>
+                <p className="text-foreground/60 text-sm leading-relaxed">{feature.description}</p>
               </Card>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="text-center space-y-8">
+      <section className="text-center space-y-10 py-12">
         <motion.div
-          className="space-y-4"
+          className="space-y-5"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <h2 className="text-4xl font-bold">Ready to Transfer?</h2>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+          <h2 className="text-5xl font-bold">Ready to Transfer?</h2>
+          <p className="text-foreground/60 text-lg max-w-2xl mx-auto leading-relaxed">
             Experience the fastest and most intuitive way to send $CIK tokens on Base chain.
           </p>
         </motion.div>
@@ -188,18 +182,18 @@ export default function Home() {
           <Button
             asChild
             size="lg"
-            className="glow-button"
+            className="bg-gradient-cik text-white hover:opacity-90 rounded-cik-sm px-8 py-6 text-base shadow-cik-lg"
           >
             <Link href="https://christisking.io/whitepaper" target="_blank">
               Read Whitepaper
             </Link>
           </Button>
-          
+
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="border-white/20"
+            className="accent-button rounded-cik-sm px-8 py-6 text-base shadow-cik"
           >
             <Link href="https://christisking.io/buy" target="_blank">
               How to Buy $CIK

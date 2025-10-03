@@ -18,7 +18,7 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="glass-card rounded-2xl p-2 mb-8">
+    <nav className="glass-card rounded-cik p-3 mb-8 shadow-cik">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-1">
           {navigation.map((item) => {
@@ -27,10 +27,10 @@ export default function Nav() {
               <Link key={item.name} href={item.href}>
                 <motion.div
                   className={cn(
-                    'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-colors focus-ring',
+                    'flex items-center space-x-2 px-5 py-2.5 rounded-cik-sm text-sm font-medium transition-all focus-ring',
                     isActive
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                      ? 'bg-gradient-cik text-white shadow-cik'
+                      : 'text-foreground/60 hover:text-foreground hover:bg-primary/5'
                   )}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -42,7 +42,7 @@ export default function Nav() {
             );
           })}
         </div>
-        
+
         <div className="flex items-center space-x-4">
           <ConnectButton
             chainStatus="icon"
