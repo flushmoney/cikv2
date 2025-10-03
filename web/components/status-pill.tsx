@@ -23,6 +23,12 @@ const statusConfig = {
     className: 'bg-blue-500/20 text-blue-400',
     animate: true,
   },
+  confirming: {
+    label: 'Confirming',
+    icon: Loader,
+    className: 'bg-yellow-500/20 text-yellow-400',
+    animate: true,
+  },
   confirmed: {
     label: 'Confirmed',
     icon: Check,
