@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { LucideIcon } from 'lucide-react';
 import { Loader, Check, X, Clock } from 'lucide-react';
 import { TxStatus } from '@/hooks/useTxStatus';
 import { cn } from '@/lib/utils';
@@ -10,7 +11,15 @@ interface StatusPillProps {
   className?: string;
 }
 
-const statusConfig = {
+type PillConfig = {
+  label: string;
+  icon: LucideIcon;
+  className: string;
+  animate: boolean;
+};
+
+// Strongly type the map to your TxStatus union
+const statusConfig: Record<TxStatus, PillConfig> = {
   idle: {
     label: 'Idle',
     icon: Clock,
@@ -52,17 +61,12 @@ export default function StatusPill({ status, className }: StatusPillProps) {
       className={cn(
         'inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium',
         config.className,
-        className
+        className,
       )}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
     >
-      <Icon 
-        className={cn(
-          'w-4 h-4',
-          config.animate && 'animate-spin'
-        )} 
-      />
+      <Icon className={cn('w-4 h-4', config.animate && 'animate-spin')} />
       <span>{config.label}</span>
     </motion.div>
   );
